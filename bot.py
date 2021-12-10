@@ -10,7 +10,7 @@ from decouple import config
 
 # MARK: Consts
 
-URL = config('WEB_HOOK_QA')
+URL = config('WEB_HOOK_PROD')
 CATACOMBS_IMAGE_URL = 'https://drive.google.com/uc?id=1DzlGprLidB-94gsODYm95Y8IMgG-oS9u'
 WOLF_IMAGE_URL = 'https://drive.google.com/uc?id=1eeGM0zPv0WDScde4eDDJX7UFBavX5BgT'
 
@@ -53,7 +53,7 @@ def form_json_for_discord_blocks(text: str, first_title: str, first_subtitle: st
 # MARK: Setters
 
 def set_alert_every_hour(job):
-    schedule.every().second.do(job)
+    schedule.every().hour.do(job)
 
 
 def set_alert_every_day(time: str, job):
@@ -120,21 +120,10 @@ def set_notify_rift_guys():
 
 def set_ping_log():
 
-    def notify_night():
-        json = form_json_for_discord_blocks(
-            '@here Рейдовые боссы заспавнятся через одну минуту',
-            ':bat: Райла',
-            'Будет в локации \'Земля Казненных\'',
-            ':fork_and_knife: Кастур',
-            'Будет в локации \'Пограничная область орков Тимак\''
-        )
-        send_msg(json)
-        log(set_notify_rift_guys)
-
     def ping_log():
         log(ping_log)
 
-    set_alert_every_hour(notify_night)
+    set_alert_every_hour(ping_log)
 
 
 # MARK: Lifecycle
