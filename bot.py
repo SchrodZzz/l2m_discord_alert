@@ -71,7 +71,10 @@ def set_alert_every_weekday(time: str, job):
 def set_notify_catacombs():
 
     def notify():
-        json = form_json_for_discord_image('@here Регистрация в каты начнется через одну минуту', CATACOMBS_IMAGE_URL)
+        json = form_json_for_discord_image(
+            '@here Регистрация в каты начнется через одну минуту:skull:',
+            CATACOMBS_IMAGE_URL
+        )
         send_msg(json)
         log(set_notify_catacombs)
 
@@ -82,7 +85,10 @@ def set_notify_catacombs():
 def set_notify_wolf():
 
     def notify():
-        json = form_json_for_discord_image('@here Волки заспавняться через одну минуту:wolf:', WOLF_IMAGE_URL)
+        json = form_json_for_discord_image(
+            '@here Волки заспавнятся через одну минуту:wolf:',
+            WOLF_IMAGE_URL
+        )
         send_msg(json)
         log(set_notify_wolf)
 
