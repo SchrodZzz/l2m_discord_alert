@@ -22,8 +22,9 @@ def log(str):
 
 
 def send_msg(json):
+    log(f'Going to send message with body: {json}')
     res = requests.post(URL, json=json)
-    log(res.text)
+    log(f'Request result: {res.text}')
 
 
 def form_json_for_discord_image(text: str, image_url: str):
@@ -137,10 +138,14 @@ def set_ping_log():
 
 def main():
     set_ping_log()
+    log("> Ping msg is set")
 
     set_notify_catacombs()
+    log("> Catacombs alert is set")
     set_notify_wolf()
+    log("> Wolfs alert is set")
     set_notify_rift_guys()
+    log("> Rift bois alert is set")
 
     while True:
         schedule.run_pending()
