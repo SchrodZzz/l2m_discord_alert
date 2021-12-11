@@ -17,12 +17,13 @@ WOLF_IMAGE_URL = 'https://drive.google.com/uc?id=1eeGM0zPv0WDScde4eDDJX7UFBavX5B
 
 # MARK: Utils
 
-def log(func):
-    print(f'[{date.today()}, {datetime.now().strftime("%H:%M:%S")}] {func.__name__}')
+def log(str):
+    print(f'[{date.today()}, {datetime.now().strftime("%H:%M:%S")}] {str}')
 
 
 def send_msg(json):
-    requests.post(URL, json=json)
+    res = requests.post(URL, json=json)
+    log(res.text)
 
 
 def form_json_for_discord_image(text: str, image_url: str):
@@ -76,7 +77,7 @@ def set_notify_catacombs():
             CATACOMBS_IMAGE_URL
         )
         send_msg(json)
-        log(set_notify_catacombs)
+        log("Notify catacombs")
 
     set_alert_every_weekday('09:29', notify)
     set_alert_every_weekday('17:49', notify)
@@ -90,7 +91,7 @@ def set_notify_wolf():
             WOLF_IMAGE_URL
         )
         send_msg(json)
-        log(set_notify_wolf)
+        log("Notify wolf")
 
     set_alert_every_day('09:29', notify)
     set_alert_every_day('17:29', notify)
@@ -107,7 +108,7 @@ def set_notify_rift_guys():
             'Будет в локации \'Гибельный лес\''
         )
         send_msg(json)
-        log(set_notify_rift_guys)
+        log("Notify day rift")
 
     def notify_night():
         json = form_json_for_discord_blocks(
@@ -118,7 +119,7 @@ def set_notify_rift_guys():
             'Будет в локации \'Пограничная область орков Тимак\''
         )
         send_msg(json)
-        log(set_notify_rift_guys)
+        log("Notify night rift")
 
     set_alert_every_day('08:59', notify_day)
     set_alert_every_day('16:59', notify_night)
@@ -127,7 +128,7 @@ def set_notify_rift_guys():
 def set_ping_log():
 
     def ping_log():
-        log(ping_log)
+        log("I'm still alive")
 
     set_alert_every_hour(ping_log)
 
