@@ -22,9 +22,9 @@ def log(str):
 
 
 def send_msg(json):
-    log(f'Going to send message with body: {json}')
+    log(f'Going to send message with body:\n{json}')
     res = requests.post(URL, json=json)
-    log(f'Request result: {res.text}')
+    log(f'Request result:\nCode: {res}\n Body:{res.text}')
 
 
 def form_json_for_discord_image(text: str, image_url: str):
