@@ -80,7 +80,7 @@ def set_notify_catacombs():
         send_msg(json)
         log("Notify catacombs")
 
-    set_alert_every_weekday('09:29', notify)
+    set_alert_every_weekday('09:19', notify)
     set_alert_every_weekday('17:49', notify)
 
 
