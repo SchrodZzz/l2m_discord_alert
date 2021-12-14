@@ -82,6 +82,7 @@ def set_notify_catacombs():
 
     set_alert_every_weekday('09:19', notify)
     set_alert_every_weekday('17:49', notify)
+    log("> Catacombs alert is set")
 
 
 def set_notify_wolf():
@@ -96,6 +97,7 @@ def set_notify_wolf():
 
     set_alert_every_day('09:29', notify)
     set_alert_every_day('17:29', notify)
+    log("> Wolfs alert is set")
 
 
 def set_notify_rift_guys():
@@ -124,6 +126,7 @@ def set_notify_rift_guys():
 
     set_alert_every_day('08:59', notify_day)
     set_alert_every_day('16:59', notify_night)
+    log("> Rift bois alert is set")
 
 
 def set_ping_log():
@@ -132,20 +135,17 @@ def set_ping_log():
         log("I'm still alive")
 
     set_alert_every_hour(ping_log)
+    log("> Ping msg is set")
 
 
 # MARK: Lifecycle
 
 def main():
     set_ping_log()
-    log("> Ping msg is set")
 
     set_notify_catacombs()
-    log("> Catacombs alert is set")
-    set_notify_wolf()
-    log("> Wolfs alert is set")
+    # set_notify_wolf()
     set_notify_rift_guys()
-    log("> Rift bois alert is set")
 
     while True:
         schedule.run_pending()
