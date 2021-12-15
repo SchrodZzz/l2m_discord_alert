@@ -12,7 +12,7 @@ from decouple import config
 
 URL = config('WEB_HOOK_PROD')
 CATACOMBS_IMAGE_URL = 'https://drive.google.com/uc?id=1DzlGprLidB-94gsODYm95Y8IMgG-oS9u'
-WOLF_IMAGE_URL = 'https://drive.google.com/uc?id=1eeGM0zPv0WDScde4eDDJX7UFBavX5BgT'
+ORK_IMAGE_URL = 'https://drive.google.com/uc?id=1H516rg3kYjyDlcsuPSN-x-xorALXx5O2'
 
 
 # MARK: Utils
@@ -85,19 +85,19 @@ def set_notify_catacombs():
     log("> Catacombs alert is set")
 
 
-def set_notify_wolf():
+def set_notify_ork():
 
     def notify():
         json = form_json_for_discord_image(
-            '@here Волки заспавнятся через одну минуту:wolf:',
-            WOLF_IMAGE_URL
+            '@here Орки заспавнятся через одну минуту:frog:',
+            ORK_IMAGE_URL
         )
         send_msg(json)
-        log("Notify wolf")
+        log("Notify ork")
 
     set_alert_every_day('09:29', notify)
     set_alert_every_day('17:29', notify)
-    log("> Wolfs alert is set")
+    log("> Orks alert is set")
 
 
 def set_notify_rift_guys():
@@ -144,7 +144,7 @@ def main():
     set_ping_log()
 
     set_notify_catacombs()
-    # set_notify_wolf()
+    set_notify_ork()
     set_notify_rift_guys()
 
     while True:
