@@ -7,6 +7,8 @@ from datetime import datetime
 
 from decouple import config
 
+from localization.en_contsts import *
+
 
 # MARK: Consts
 
@@ -22,9 +24,10 @@ def log(str):
 
 
 def send_msg(json):
-    log(f'Going to send message with body:\n{json}')
+    log(SEND_MESSAGE_BODY.format(json=json))
     res = requests.post(URL, json=json)
-    log(f'Request result:\nCode: {res}\n Body:{res.text}')
+    body = res if res != '' else '<Empty>'
+    log(SEND_MESSAGE_REQUEST_RESULT(code=res, body=body))
 
 
 def form_json_for_discord_image(text: str, image_url: str):
@@ -74,74 +77,75 @@ def set_notify_catacombs():
 
     def notify():
         json = form_json_for_discord_image(
-            '@here Регистрация в каты начнется через одну минуту:skull:',
+            CATACOMBS_TITLE,
             CATACOMBS_IMAGE_URL
         )
         send_msg(json)
-        log("Notify catacombs")
+        log(CATACOMBS_LOG_MSG)
 
     set_alert_every_weekday('09:19', notify)
     set_alert_every_weekday('17:49', notify)
-    log("> Catacombs alert is set")
+    log(CATACOMBS_LOG_IS_SET)
 
 
 def set_notify_ork():
 
     def notify():
         json = form_json_for_discord_image(
-            '@here Орки заспавнятся через одну минуту:frog:',
+            ORKS_TITLE,
             ORK_IMAGE_URL
         )
         send_msg(json)
-        log("Notify ork")
+        log(ORKS_LOG_MSG)
 
     set_alert_every_day('09:29', notify)
     set_alert_every_day('17:29', notify)
-    log("> Orks alert is set")
+    log(ORKS_LOG_IS_SET)
 
 
 def set_notify_rift_guys():
 
     def notify_day():
         json = form_json_for_discord_blocks(
-            '@here Рейдовые боссы заспавнятся через одну минуту',
-            ':boar: Васк',
-            'Будет в локации \'Кровавые топи\'',
-            ':cockroach: Крума',
-            'Будет в локации \'Гибельный лес\''
+            RIFT_BOSSES_TITLE,
+            RIFT_BOSSES_DAY_FIRST_TITLE,
+            RIFT_BOSSES_DAY_FIRST_SUBTITLE,
+            RIFT_BOSSES_DAY_SECOND_TITLE,
+            RIFT_BOSSES_DAY_SECOND_SUBTITLE
         )
         send_msg(json)
-        log("Notify day rift")
+        log(RIFT_BOSESS_DAY_LOG_MSG)
 
     def notify_night():
         json = form_json_for_discord_blocks(
-            '@here Рейдовые боссы заспавнятся через одну минуту',
-            ':bat: Райла',
-            'Будет в локации \'Земля Казненных\'',
-            ':fork_and_knife: Кастур',
-            'Будет в локации \'Пограничная область орков Тимак\''
+            RIFT_BOSSES_TITLE,
+            RIFT_BOSSES_NIGHT_FIRST_TITLE,
+            RIFT_BOSSES_NIGHT_FIRST_SUBTITLE,
+            RIFT_BOSSES_NIGHT_SECOND_TITLE,
+            RIFT_BOSSES_NIGHT_SECOND_SUBTITLE
         )
         send_msg(json)
-        log("Notify night rift")
+        log(RIFT_BOSESS_NIGHT_LOG_MSG)
 
     set_alert_every_day('08:59', notify_day)
     set_alert_every_day('16:59', notify_night)
-    log("> Rift bois alert is set")
+    log(RIFT_BOSSES_LOG_IS_SET)
 
 
 def set_ping_log():
 
     def ping_log():
-        log("I'm still alive")
+        log(PING_LOG_MSG)
 
     set_alert_every_hour(ping_log)
-    log("> Ping msg is set")
+    log(PING_LOG_IS_SET)
 
 
 # MARK: Lifecycle
 
 def main():
     set_ping_log()
+    return
 
     set_notify_catacombs()
     set_notify_ork()
