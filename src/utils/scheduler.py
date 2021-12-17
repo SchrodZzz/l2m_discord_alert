@@ -12,6 +12,10 @@ class Scheduler:
         schedule.every().day.at(time).do(job)
 
     @staticmethod
+    def set_alert_every_sunday(time: str, job):
+        schedule.every().sunday.at(time).do(job)
+
+    @staticmethod
     def set_alert_every_weekday(time: str, job):
         schedule.every().monday.at(time).do(job)
         schedule.every().tuesday.at(time).do(job)

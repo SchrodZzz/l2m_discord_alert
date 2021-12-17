@@ -16,6 +16,12 @@ ORKS_TITLE = '@here Орки заспавнятся через одну мину
 ORKS_LOG_MSG = '>>> Orks notification is send'
 ORKS_IS_SET_LOG_MSG = '!!! Orks alert is set'
 
+CLAN_BOSSES_TITLE = '@here Сегодня, после 20:30, все собираемся в клан холе для фарма босоов.' \
+                    'Если у вас нет возможности пристуствовать, то отпишите об жто в канал #clan-bosses-absent-ppl,' \
+                    'иначе есть шанс быть кикнутыми из клана'
+CLAN_BOSSES_LOG_MSG = '>>> Clan bosses notification is send'
+CLAN_BOSSES_IS_SET_LOG_MSG = '!!! Clan bosses alert is set'
+
 
 # MARK: - Other Alerts
 

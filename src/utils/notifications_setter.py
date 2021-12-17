@@ -64,7 +64,19 @@ class NotificationsSetter:
         Logger.log(RIFT_BOSSES_IS_SET_LOG_MSG)
 
     @staticmethod
+    def set_clan_bosses_notification():
+
+        def notify():
+            json = JSONEncoder.build_discord_msg_image(CLAN_BOSSES_TITLE, CLAN_BOSSES_IMAGE_URL)
+            RequestSender.send(WEBHOOK_URL, json)
+            Logger.log(CLAN_BOSSES_LOG_MSG)
+
+        Scheduler.set_alert_every_sunday('09:00', notify)
+        Logger.log(CLAN_BOSSES_IS_SET_LOG_MSG)
+
+    @staticmethod
     def set_ping():
+        
         def ping():
             Logger.log(PING_LOG_MSG)
 
