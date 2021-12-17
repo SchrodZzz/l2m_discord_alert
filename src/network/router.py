@@ -11,4 +11,8 @@ def ping() -> str:
    return PING_LOG_MSG
 
 
+if __name__ == '__main__':
+ app.run()
+
+
 Logger.log(ROUTER_PATHS_ARE_SET)

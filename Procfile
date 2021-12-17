@@ -1,2 +1,2 @@
 worker: python src/main.py
-web: gunicorn gettingstarted.wsgi
+web: python src/network/router.py
