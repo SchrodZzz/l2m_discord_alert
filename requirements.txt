@@ -1,3 +1,4 @@
 python-decouple
-schedule
-requests
+schedule~=1.1.0
+requests~=2.26.0
+Flask~=2.0.2

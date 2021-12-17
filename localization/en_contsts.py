@@ -40,3 +40,5 @@ RIFT_BOSSES_IS_SET_LOG_MSG = '!!! Rift bosses alert is set'
 
 PING_LOG_MSG = 'App is still alive'
 PING_IS_SET_LOG_MSG = '!!! Ping message is set'
+
+ROUTER_PATHS_ARE_SET = '!!! Router paths are set'

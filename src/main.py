@@ -1,3 +1,5 @@
+import src.network.router
+
 from src.utils.run_loop import *
 from src.utils.notifications_setter import NotificationsSetter
 
